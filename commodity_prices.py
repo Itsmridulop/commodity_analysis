@@ -24,19 +24,19 @@ print('Mean value: ', analytical_obj.getMean(input('Enter field mane for finding
 print('Max value: ', analytical_obj.getMax(input('Enter field name for finding max value: ')))    # getting maximum value of any field
 print(analytical_obj.getPrecentile(input('Enter field to find precentile: '), input('Enter precentile value: ')))    # getting precentile value of any field
 print('Skewness\n', analytical_obj.getSkewness(input('Enter field to find skewness: ')))    # getting skewness of any field
-print('Correlation between two columns', analytical_obj.getCorrelation(cleaned_data, input('Enter first column name: '), input('Enter second column name: ')))    # getting correlation between two fields
 analytical_obj.getQuarterlyDistribution(cleaned_data, input('Enter field name: '))    # getting quarterly distribution of any field
 analytical_obj.getCorrelation(cleaned_data, input('Enter first column name: '), input('Enter second column name: '))    # getting correlation between two fields
 
 # complex analysis
-print('Available analysis:\n1) Max value comparition\n2) Price trend of all commodity\n3) Price Fluctuation\n')
-analysis_type = input('Enter number of analysis you wanna preform: ')
-match analysis_type:
-    case '1':
-        gfunc.maxValAnalysis(analyticalFunc=analytical_obj.getValueComparitionWithThreshold, data=cleaned_data)
-    case '2':
-        gfunc.priceTrend(data=cleaned_data)
-    case '3':
-        gfunc.priceFluctuation(data=cleaned_data)
-    case _:
-        raise ValueError('Invalid analysis type')
+while(True): 
+    print('Available analysis:\n1) Max value comparition\n2) Price trend of all commodity\n3) Price Fluctuation\n')
+    analysis_type = input('Enter number of analysis you wanna preform: ')
+    match analysis_type:
+        case '1':
+            gfunc.maxValAnalysis(analyticalFunc=analytical_obj.getValueComparitionWithThreshold, data=cleaned_data)
+        case '2':
+            gfunc.priceTrend(data=cleaned_data)
+        case '3':
+            gfunc.priceFluctuation(data=cleaned_data)
+        case _:
+            raise ValueError('Invalid analysis type')
